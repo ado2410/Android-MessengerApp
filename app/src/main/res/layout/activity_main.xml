@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/activity_main_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/shape_bar">
+
+        <TextView
+            android:id="@+id/activity_main_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/activity_main_iv_avatar"/>
+
+        <ImageView
+            android:id="@+id/activity_main_iv_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_default_avatar"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:clickable="true" />
+
+    </RelativeLayout>
+
+    <!-- Searching -->
+    <RelativeLayout
+        android:id="@+id/activity_main_searching"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/shape_bar"
+        android:layout_below="@id/activity_main_header">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tìm kiếm" />
+
+    </RelativeLayout>
+
+    <!-- Message -->
+    <LinearLayout
+        android:id="@+id/activity_main_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/activity_main_searching"
+        android:padding="10dp">
+
+    </LinearLayout>
+
+</RelativeLayout>

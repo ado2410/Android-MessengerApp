@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/activity_option_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/activity_option_iv_account"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_account"/>
+
+        <TextView
+            android:id="@+id/activity_option_tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Tài khoản"
+            android:layout_toRightOf="@id/activity_option_iv_account"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_option_security"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/activity_option_iv_security"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_security"/>
+
+        <TextView
+            android:id="@+id/activity_option_tv_security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Bảo mật"
+            android:layout_toRightOf="@id/activity_option_iv_security"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_option_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/activity_option_iv_logout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_account"/>
+
+        <TextView
+            android:id="@+id/activity_option_tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Đăng xuất"
+            android:layout_toRightOf="@id/activity_option_iv_logout"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

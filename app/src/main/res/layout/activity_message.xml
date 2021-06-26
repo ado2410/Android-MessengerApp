@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/activity_message_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/shape_bar">
+
+        <ImageView
+            android:id="@+id/activity_message_iv_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_default_avatar"
+            android:layout_marginRight="15dp" />
+
+        <TextView
+            android:id="@+id/activity_message_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/activity_message_iv_avatar"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+
+    <!-- Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_message_header"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:id="@+id/activity_message_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Chat box -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:background="@drawable/shape_bar">
+
+        <EditText
+            android:id="@+id/activity_message_tv_chatbox"
+            android:layout_width="match_parent"
+            android:layout_marginRight="100dp"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tin nhắn"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"/>
+
+        <Button
+            android:id="@+id/activity_message_btn_sending_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gửi"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

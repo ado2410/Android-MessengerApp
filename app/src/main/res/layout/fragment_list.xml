@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/fagment_list_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/fragment_list_iv_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_default_avatar"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:id="@+id/fragment_list_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/fragment_list_iv_avatar"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/fragment_list_tv_last_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Message"
+        android:layout_alignLeft="@id/fragment_list_tv_name"
+        android:layout_below="@id/fragment_list_tv_name"/>
+
+    <TextView
+        android:id="@+id/fragment_list_tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
