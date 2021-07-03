@@ -124,6 +124,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public boolean isUserExistence(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM users WHERE username = ?";
+        Cursor cursor = db.rawQuery(query, new String[] {String.valueOf(username)});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public int register(String username, String password, String confirmedPassword, String firstName, String lastName) {
+        if (isUserExistence(username))
+            return 1;
+        if (!confirmedPassword.equals(password))
+            return 2;
+        User user = new User(username, password, firstName, lastName);
+        addUser(user);
+        return 0;
+    }
+
     //Lấy user đang đăng nhập
     public User getUser() {
         return this.user;
@@ -216,8 +236,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return list;
     }
 
-    //Nhân
     public List<MessageList> getMessageList() {
+        return getMessageList("");
+    }
+
+    //Nhân
+    public List<MessageList> getMessageList(String keyword) {
         List<MessageList> list = new ArrayList<>();
         if (user == null)
             return list;
@@ -226,8 +250,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //Lấy tất cả id của người nhận
-        String queryReceiverIds = "SELECT DISTINCT id FROM (SELECT DISTINCT receiver_id AS id, time FROM messages WHERE sender_id = ? OR receiver_id = ? UNION SELECT DISTINCT sender_id, time AS id FROM messages WHERE sender_id = ? OR receiver_id = ? ORDER BY time DESC)";
-        Cursor cursorReceiverIds = db.rawQuery(queryReceiverIds, new String[] { Integer.toString(senderId), Integer.toString(senderId), Integer.toString(senderId), Integer.toString(senderId) });
+        String queryReceiverIds = "SELECT DISTINCT receivers_id.id AS id FROM (SELECT DISTINCT receiver_id AS id, time FROM messages WHERE sender_id = ? OR receiver_id = ? UNION SELECT DISTINCT sender_id, time AS id FROM messages WHERE sender_id = ? OR receiver_id = ? ORDER BY time DESC) AS receivers_id INNER JOIN users ON receivers_id.id = users.id WHERE users.first_name LIKE ? OR users.last_name LIKE ?";
+        Cursor cursorReceiverIds = db.rawQuery(queryReceiverIds, new String[] { Integer.toString(senderId), Integer.toString(senderId), Integer.toString(senderId), Integer.toString(senderId), "%" + keyword + "%", "%" + keyword + "%"});
         cursorReceiverIds.moveToFirst();
 
         //Mỗi người nhận lấy record message mới nhất và thêm vào list

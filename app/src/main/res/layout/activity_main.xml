@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -39,13 +40,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@drawable/shape_bar"
         android:layout_below="@id/activity_main_header">
 
         <EditText
+            android:id="@+id/activity_main_et_searching"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:background="@drawable/shape_login_input_background"
+            android:textColor="@color/login_input_text"
+            android:textColorHint="@color/login_input_text_hint"
             android:hint="Tìm kiếm" />
+
+        <ImageView
+            android:id="@+id/activity_main_iv_searching_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_baseline_close_24"
+            android:clickable="true"
+            android:layout_alignRight="@id/activity_main_et_searching"
+            android:layout_centerVertical="true"
+            app:tint="@color/login_input_text" />
 
     </RelativeLayout>
 

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,14 +17,17 @@
 
         <ImageView
             android:id="@+id/activity_option_iv_account"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_account"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            app:tint="@color/login_input_text" />
 
         <TextView
             android:id="@+id/activity_option_tv_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             android:text="Tài khoản"
             android:layout_toRightOf="@id/activity_option_iv_account"
@@ -38,14 +44,17 @@
 
         <ImageView
             android:id="@+id/activity_option_iv_security"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_security"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_security_24"
+            app:tint="@color/login_input_text" />
 
         <TextView
             android:id="@+id/activity_option_tv_security"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             android:text="Bảo mật"
             android:layout_toRightOf="@id/activity_option_iv_security"
@@ -62,14 +71,17 @@
 
         <ImageView
             android:id="@+id/activity_option_iv_logout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_account"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_settings_power_24"
+            app:tint="@color/login_input_text" />
 
         <TextView
             android:id="@+id/activity_option_tv_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             android:text="Đăng xuất"
             android:layout_toRightOf="@id/activity_option_iv_logout"

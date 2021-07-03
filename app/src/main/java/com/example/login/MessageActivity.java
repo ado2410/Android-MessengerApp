@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.login.model.Message;
@@ -25,6 +26,7 @@ public class MessageActivity extends AppCompatActivity {
     TextView tvName;
     EditText etChatbox;
     Button btnSend;
+    ScrollView scrollView;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -37,6 +39,9 @@ public class MessageActivity extends AppCompatActivity {
         tvName = (TextView) findViewById(R.id.activity_message_tv_name);
         etChatbox = (EditText) findViewById(R.id.activity_message_tv_chatbox);
         btnSend = (Button) findViewById(R.id.activity_message_btn_sending_message);
+        scrollView = (ScrollView) findViewById((R.id.activity_message_scrolling_content));
+
+        scrollView.scrollTo(0, Integer.MAX_VALUE);
 
         DatabaseHandler db = new DatabaseHandler(this);
         Intent intent = this.getIntent();

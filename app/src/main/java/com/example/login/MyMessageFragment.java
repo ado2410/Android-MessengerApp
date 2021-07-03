@@ -74,7 +74,6 @@ public class MyMessageFragment extends Fragment {
         tvMessage = (TextView) view.findViewById(R.id.fragment_my_message_tv_text);
 
         Bundle bundle = getArguments();
-        Log.d("MESSAGE", bundle.getString("message"));
         tvMessage.setText(bundle.getString("message"));
     }
 }

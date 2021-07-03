@@ -10,8 +10,14 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +31,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     TextView tvName;
     ImageView ivAvatar;
+    ImageView ivSearchingClear;
+    EditText etSearching;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -35,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         tvName = (TextView) findViewById(R.id.activity_main_tv_name);
         ivAvatar = (ImageView) findViewById(R.id.activity_main_iv_avatar);
+        etSearching = (EditText) findViewById(R.id.activity_main_et_searching);
+        ivSearchingClear = (ImageView) findViewById(R.id.activity_main_iv_searching_clear);
 
         DatabaseHandler db = new DatabaseHandler(this);
 
@@ -48,23 +58,43 @@ public class MainActivity extends AppCompatActivity {
             openLoginActivity();
         } else {
             tvName.setText(db.getUser().getFirstName() + " " + db.getUser().getLastName());
-
             ivAvatar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     openOptionActivity();
                 }
             });
-
-            updateMessageList();
+            updateMessageList(etSearching.getText().toString());
         }
+
+        etSearching.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            updateMessageList(etSearching.getText().toString());
+                            return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        ivSearchingClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etSearching.setText("");
+                updateMessageList();
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onResume() {
         super.onResume();
-        updateMessageList();
+        updateMessageList(etSearching.getText().toString());
     }
 
     private void openOptionActivity() {
@@ -79,8 +109,13 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void updateMessageList() {
+        updateMessageList("");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    protected void updateMessageList(String keyword) {
         DatabaseHandler db = new DatabaseHandler(this);
-        List<MessageList> messageList = db.getMessageList();
+        List<MessageList> messageList = db.getMessageList(keyword);
         LinearLayout layout = (LinearLayout) findViewById(R.id.activity_main_message_list);
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTransaction = fragMan.beginTransaction();

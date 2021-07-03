@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvUsername;
     private TextView tvPassword;
     private Button btnLogin;
+    private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         tvUsername = (TextView) findViewById(R.id.activity_login_et_username);
         tvPassword = (TextView) findViewById(R.id.activity_login_et_password);
         btnLogin = (Button) findViewById(R.id.activity_login_btn_login);
+        btnRegister = (Button) findViewById(R.id.activity_login_btn_register);
 
         DatabaseHandler db = new DatabaseHandler(this);
         db.generateSampleData();
@@ -44,6 +46,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRegisterActivity();
+            }
+        });
     }
 
     @Override
@@ -108,7 +117,12 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void openRegisterActivity() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
     private void makeToast(String message) {
-        Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }
