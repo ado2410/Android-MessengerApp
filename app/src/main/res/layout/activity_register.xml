@@ -5,33 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="20dp">
+    android:padding="30dp">
 
     <ImageView
         android:id="@+id/activity_register_iv_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/ic_logo"
+        android:src="@drawable/ic_logo_sign_up"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/activity_register_et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username..."
+        android:hint="Tên tài khoản"
         android:maxLines="1"
         android:inputType="text"
         android:layout_marginTop="30dp"
-        android:background="@drawable/shape_login_input_background"
-        android:textColor="@color/login_input_text"
-        android:textColorHint="@color/login_input_text_hint"
+        android:background="@drawable/shape_input"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text_light"
         android:layout_below="@id/activity_register_iv_icon" />
 
     <LinearLayout
         android:id="@+id/activity_register_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:layout_below="@id/activity_register_et_username"
         android:weightSum="1">
@@ -44,10 +44,10 @@
             android:layout_marginRight="10dp"
             android:inputType="text"
             android:maxLines="1"
-            android:background="@drawable/shape_login_input_background"
-            android:textColor="@color/login_input_text"
-            android:textColorHint="@color/login_input_text_hint"
-            android:hint="họ..."/>
+            android:background="@drawable/shape_input"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text_light"
+            android:hint="Họ"/>
 
         <EditText
             android:id="@+id/activity_register_et_last_name"
@@ -57,10 +57,10 @@
             android:layout_marginLeft="10dp"
             android:inputType="text"
             android:maxLines="1"
-            android:background="@drawable/shape_login_input_background"
-            android:textColor="@color/login_input_text"
-            android:textColorHint="@color/login_input_text_hint"
-            android:hint="tên..."/>
+            android:background="@drawable/shape_input"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text_light"
+            android:hint="Tên"/>
 
     </LinearLayout>
 
@@ -69,12 +69,12 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password..."
+        android:hint="Mật khẩu"
         android:maxLines="1"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_login_input_background"
-        android:textColor="@color/login_input_text"
-        android:textColorHint="@color/login_input_text_hint"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_input"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text_light"
         android:layout_below="@id/activity_register_name" />
 
     <EditText
@@ -82,24 +82,40 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="nhập lại password..."
+        android:hint="Nhập lại mật khẩu"
         android:maxLines="1"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_login_input_background"
-        android:textColor="@color/login_input_text"
-        android:textColorHint="@color/login_input_text_hint"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_input"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text_light"
         android:layout_below="@id/activity_register_et_password" />
 
     <Button
         android:id="@+id/activity_register_btn_register"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_register_et_confirmed_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         android:text="Đăng ký"
-        android:textColor="@color/login_button_text"
-        android:background="@drawable/shape_login_button_background"
-        app:backgroundTint="@color/login_button_background" />
+        android:textColor="@color/white"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@null" />
+
+    <Button
+        android:id="@+id/activity_register_btn_login"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_register_btn_register"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Đăng nhập"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:textColor="@color/text"
+        android:background="@drawable/shape_outline_button"
+        app:backgroundTint="@null" />
 
 </RelativeLayout>

@@ -2,11 +2,9 @@ package com.example.login;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -15,7 +13,6 @@ import com.example.login.model.MessageList;
 import com.example.login.model.User;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +47,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL(create_users_table);
         db.execSQL(create_messages_table);
+
+        //Khởi tạo dữ liệu mẫu
+        generateSampleData();
     }
 
     @Override
@@ -110,7 +110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    //Tạo nhắn tin
+    //Tạo tin nhắn mới
     public void addMessage(int senderId, int receiverId, String message) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -124,7 +124,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean isUserExistence(String username) {
+    //Kiểm tra người dùng tồn tại
+    public boolean userExists(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM users WHERE username = ?";
         Cursor cursor = db.rawQuery(query, new String[] {String.valueOf(username)});
@@ -134,8 +135,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return false;
     }
 
+    //Đăng ký
     public int register(String username, String password, String confirmedPassword, String firstName, String lastName) {
-        if (isUserExistence(username))
+        if (userExists(username))
             return 1;
         if (!confirmedPassword.equals(password))
             return 2;
@@ -169,14 +171,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
-    //Lấy tất cả users
+    //Lấy tất cả user
     public List<User> getUsers() {
+        return getUsers("");
+    }
+
+    //Tìm user bằng keyword
+    public List<User> getUsers(String keyword) {
         List<User> list = new ArrayList<>();
         if (user == null)
             return list;
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM users";
-        Cursor cursor = db.rawQuery(query, null);
+        String query = "SELECT * FROM users WHERE id <> ? AND (username LIKE ? OR first_name LIKE ? OR last_name LIKE ?)";
+        Cursor cursor = db.rawQuery(query, new String[] {String.valueOf(user.getId()), "%" + keyword + "%", "%" + keyword + "%", "%" + keyword + "%"});
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
@@ -211,6 +218,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Thu hồi tin nhắn
+    public boolean recallMessage(int messageId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT id, sender_id FROM messages WHERE id = ?";
+        Cursor cursor = db.rawQuery(query, new String[] {String.valueOf(messageId)});
+        cursor.moveToFirst();
+
+        if (!cursor.isAfterLast()) {
+            if (getUser().getId() == cursor.getInt(cursor.getColumnIndex("sender_id"))) {
+                db.delete("messages", "id = ?", new String[] {String.valueOf(messageId)});
+                return true;
+            }
+        }
+        return false;
+    }
+
     //Nhận tin nhắn
     public List<Message> getMessages(int receiverId) {
         List<Message> list = new ArrayList<>();
@@ -236,11 +259,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return list;
     }
 
+    //Nhận danh sách nhắn tin
     public List<MessageList> getMessageList() {
         return getMessageList("");
     }
 
-    //Nhân
+    //Nhân danh sách nhắn tin
     public List<MessageList> getMessageList(String keyword) {
         List<MessageList> list = new ArrayList<>();
         if (user == null)
@@ -284,6 +308,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return list;
     }
 
+    //Khơi tạo dữ liệu mẫu nếu database trống
     public void generateSampleData() {
         if (getUser(1) != null)
             return;

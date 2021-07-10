@@ -16,11 +16,13 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etPassword;
     private EditText etConfirmedPassword;
     Button btnRegister;
+    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().hide();
 
         etUsername = (EditText) findViewById(R.id.activity_register_et_username);
         firstName = (EditText) findViewById(R.id.activity_register_et_first_name);
@@ -28,11 +30,20 @@ public class RegisterActivity extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.activity_register_et_password);
         etConfirmedPassword = (EditText) findViewById(R.id.activity_register_et_confirmed_password);
         btnRegister = (Button) findViewById(R.id.activity_register_btn_register);
+        btnLogin = (Button) findViewById(R.id.activity_register_btn_login);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 register();
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

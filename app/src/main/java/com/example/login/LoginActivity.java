@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister = (Button) findViewById(R.id.activity_login_btn_register);
 
         DatabaseHandler db = new DatabaseHandler(this);
-        db.generateSampleData();
 
         if (isLoggedIn()) {
             login();

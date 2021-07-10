@@ -16,6 +16,7 @@ public class OptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
+        getSupportActionBar().hide();
 
         rlLogout = (RelativeLayout) findViewById(R.id.activity_option_logout);
 

@@ -5,26 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="20dp">
+    android:padding="30dp">
 
     <ImageView
         android:id="@+id/activity_login_iv_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/ic_logo"
+        android:src="@drawable/ic_logo_login"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/activity_login_et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username..."
+        android:hint="Tên tài khoản"
         android:maxLines="1"
         android:inputType="text"
         android:layout_marginTop="30dp"
-        android:background="@drawable/shape_login_input_background"
-        android:textColor="@color/login_input_text"
-        android:textColorHint="@color/login_input_text_hint"
+        android:background="@drawable/shape_input"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text_light"
         android:layout_below="@id/activity_login_iv_icon" />
 
     <EditText
@@ -32,43 +32,48 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password..."
+        android:hint="Mật khẩu"
         android:maxLines="1"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_login_input_background"
-        android:textColor="@color/login_input_text"
-        android:textColorHint="@color/login_input_text_hint"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_input"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text_light"
         android:layout_below="@id/activity_login_et_username" />
 
     <Button
         android:id="@+id/activity_login_btn_login"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_login_et_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         android:text="Đăng nhập"
-        android:textColor="@color/login_button_text"
-        android:background="@drawable/shape_login_button_background"
-        app:backgroundTint="@color/login_button_background" />
+        android:textColor="@color/white"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@null" />
 
     <Button
         android:id="@+id/activity_login_btn_register"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_login_btn_login"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="Đăng ký"
-        android:textColor="@color/login_button_text"
-        android:background="@drawable/shape_login_button_background"
-        app:backgroundTint="@color/login_button_background" />
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:textColor="@color/text"
+        android:background="@drawable/shape_outline_button"
+        app:backgroundTint="@null" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tài khoản thử:\njennydo - 123\ntrucgiang - 123\nvanky - 123\nhuumanh - 123\n\nNote: Sau khi đã đăng nhập nhấp chuột vào biểu tượng phía bên phải tên người dùng để đăng xuất."
-        android:layout_marginTop="20dp"
+        android:text="Tài khoản thử:\njennydo - 123\ntrucgiang - 123\nvanky - 123\nhuumanh - 123\nNote: Sau khi đã đăng nhập nhấp chuột vào biểu tượng phía bên phải tên người dùng để đăng xuất."
+        android:layout_marginTop="5dp"
+        android:textColor="@color/text_light"
         android:layout_below="@id/activity_login_btn_register"/>
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid
-        android:color="@color/login_button_background" />
+    <gradient android:startColor="@color/primary_start"
+        android:centerColor="@color/primary"
+        android:endColor="@color/primary_end" />
     <corners android:radius="50dp" />
 </shape>
