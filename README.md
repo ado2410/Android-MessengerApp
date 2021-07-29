@@ -12,4 +12,27 @@ Hiện nay thì nhắn tin thông qua SMS hầu như không được sử dụng
 - Thu hồi tin nhắn: Thu hồi lại tin nhắn mà người dùng muốn xóa.
 - Tìm kiếm mọi người: Tìm kiếm một người dùng khác.
 # Giao diện
-Đăng nhập
+<h3>Đăng nhập</h3>
+<div align="center">
+  <img src="https://github.com/jennydo2000/Android-MessengerApp/blob/master/shortcuts/login.png">
+</div>
+<h3>Đăng ký</h3>
+<div align="center">
+  <img src="https://github.com/jennydo2000/Android-MessengerApp/blob/master/shortcuts/register.png">
+</div>
+<h3>Trang chủ</h3>
+<div align="center">
+  <img src="https://github.com/jennydo2000/Android-MessengerApp/blob/master/shortcuts/home.png">
+</div>
+<h3>Xem tin nhắn</h3>
+<div align="center">
+  <img src="https://github.com/jennydo2000/Android-MessengerApp/blob/master/shortcuts/message.png">
+</div>
+<h3>Cài đặt</h3>
+<div align="center">
+  <img src="https://github.com/jennydo2000/Android-MessengerApp/blob/master/shortcuts/setting.png">
+</div>
+<h3>Đăng nhập</h3>
+<div align="center">
+  <img src="https://github.com/jennydo2000/Android-MessengerApp/blob/master/shortcuts/login.png">
+</div>
